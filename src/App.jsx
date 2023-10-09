@@ -85,7 +85,7 @@ const App = () => {
   };
 
   return (
-    <div className='m-4 rounded-xl flex gap-3 text-white'>
+    <div className='m-4 rounded-xl flex gap-4 text-white'>
       <div className='rounded-xl w-[200px] h-fit pb-1 bg-[#33374f] hidden sm:block'>
         <h2 className='p-2 text-xl font-bold text-center'>Genres</h2>
         {genres
