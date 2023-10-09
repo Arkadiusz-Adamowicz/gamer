@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
@@ -7,7 +8,8 @@ const App = () => {
   const [filteredGames, setFilteredGames] = useState([]);
   const [page, setPage] = useState(1);
   const [select, setSelect] = useState(0);
-  const apiKey = '0ceb54f2297749aeb6e2c83e748256fc';
+  const apiKey = import.meta.env.VITE_RAWG_KEY;
+
   console.log(apiKey);
   const genres = [
     {
