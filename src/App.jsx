@@ -4,11 +4,10 @@ import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
 
 const App = () => {
   const [games, setGames] = useState([]);
-  console.log(games);
   const [filteredGames, setFilteredGames] = useState([]);
   const [page, setPage] = useState(1);
   const [select, setSelect] = useState(0);
-  const apiKey = import.meta.env.VITE_RAWG_KEY;
+  const apiKey = '0ceb54f2297749aeb6e2c83e748256fc';
   console.log(apiKey);
   const genres = [
     {
