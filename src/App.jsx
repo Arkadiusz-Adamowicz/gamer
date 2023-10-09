@@ -8,6 +8,8 @@ const App = () => {
   const [filteredGames, setFilteredGames] = useState([]);
   const [page, setPage] = useState(1);
   const [select, setSelect] = useState(0);
+  const apiKey = import.meta.env.VITE_RAWG_KEY;
+  console.log(apiKey);
   const genres = [
     {
       id: 2,
@@ -42,7 +44,6 @@ const App = () => {
       name: 'Platformer',
     },
   ];
-  const apiKey = import.meta.env.VITE_RAWG_KEY;
 
   useEffect(() => {
     fetchGames();
