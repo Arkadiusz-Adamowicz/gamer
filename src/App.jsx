@@ -2,15 +2,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
+import.meta.env.VITE_RAWG_KEY;
 
 const App = () => {
   const [games, setGames] = useState([]);
   const [filteredGames, setFilteredGames] = useState([]);
   const [page, setPage] = useState(1);
   const [select, setSelect] = useState(0);
-  const apiKey = import.meta.env.VITE_RAWG_KEY;
-
-  console.log(apiKey);
   const genres = [
     {
       id: 2,
@@ -76,7 +74,9 @@ const App = () => {
   const fetchGames = async () => {
     try {
       const res = await axios.get(
-        `https://api.rawg.io/api/games?key=${apiKey}&page=${page}`
+        `https://api.rawg.io/api/games?key=${
+          import.meta.env.VITE_RAWG_KEY
+        }&page=${page}`
       );
       const data = res.data.results;
       setGames(data);
