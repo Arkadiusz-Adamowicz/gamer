@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div className="m-4 flex gap-5 text-white">
       <div className="rounded-xl w-[200px] h-fit bg-[#33374f] hidden sm:block">
-        <h2 className="p-3 text-xl  font-bold text-center ">GENRES</h2>
+        <h2 className="p-3 text-lg  font-bold text-center ">GENRES</h2>
         {genres
           .sort((a, b) => (a.name < b.name ? -1 : 1))
           .map((genre) => (
@@ -35,9 +35,9 @@ const App = () => {
           ))}
       </div>
       <div className="w-full rounded-xl bg-[#33374f]">
-        <div className="p-3 text-xl font-bold text-center flex items-center justify-between ">
+        <div className="p-3 text-lg font-bold text-center flex items-center justify-between ">
           <BiSolidLeftArrow className="cursor-pointer" onClick={handlePrev} />
-          <span>GAMES</span>
+          <h2>GAMES</h2>
           <BiSolidRightArrow className="cursor-pointer" onClick={handleNext} />
         </div>
         <div className="grid base:grid-cols sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 content-center p-2 w-full justify-center font-semibold ">

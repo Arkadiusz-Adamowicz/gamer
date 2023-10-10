@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import.meta.env.VITE_RAWG_KEY;
@@ -46,8 +47,8 @@ const useFetch = () => {
     fetchGames();
   }, [page]);
 
-  const handleSelect = name => {
-    setSelect(name);
+  const handleSelect = id => {
+    setSelect(id);
   };
 
   const filterGames = genre => {
