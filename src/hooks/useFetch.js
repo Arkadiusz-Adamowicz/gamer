@@ -64,7 +64,7 @@ const useFetch = () => {
   };
 
   const handlePrev = () => {
-    page > 0 && setPage(page => page - 1);
+    setPage(page => page - 1);
   };
 
   const handleNext = () => {
