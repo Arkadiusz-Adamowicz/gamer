@@ -5,62 +5,31 @@ import.meta.env.VITE_RAWG_KEY;
 
 const useFetch = () => {
   const [games, setGames] = useState([]);
+  const [genres, setGenres] = useState([]);
   const [filteredGames, setFilteredGames] = useState([]);
   const [page, setPage] = useState(1);
   const [select, setSelect] = useState(0);
-  const genres = [
-    {
-      id: 2,
-      name: 'Shooter',
-    },
-    {
-      id: 3,
-      name: 'Action',
-    },
-    {
-      id: 4,
-      name: 'Adventure',
-    },
-    {
-      id: 5,
-      name: 'RPG',
-    },
-    {
-      id: 7,
-      name: 'Puzzle',
-    },
-    {
-      id: 51,
-      name: 'Indie',
-    },
-    {
-      id: 59,
-      name: 'Multiplayer',
-    },
-    {
-      id: 83,
-      name: 'Platformer',
-    },
-  ];
+  const [searchGame, setSearchGame] = useState('');
 
   useEffect(() => {
     fetchGames();
+    fetchGenres();
   }, [page]);
 
   const handleSelect = id => {
     setSelect(id);
   };
 
+  // const handleSearch = () => {
+  //   const searchedGame = filteredGames.filter(
+  //     game =>
+  //       game.name && game.name.toLowerCase().includes(searchGame.toLowerCase())
+  //   );
+  //   setFilteredGames(searchedGame);
+  // };
 
-  const filterGames = genre => {
-    const { id, name } = genre;
-    name === 'All'
-      ? setFilteredGames(games)
-      : setFilteredGames(
-          games.filter(
-            game => game.genres && game.genres.find(genre => genre.id === id)
-          )
-        );
+  const filterGames = id => {
+    setFilteredGames(games.filter(genre => genre.id && genre.id === id));
   };
 
   const handlePrev = () => {
@@ -78,19 +47,35 @@ const useFetch = () => {
           import.meta.env.VITE_RAWG_KEY
         }&page=${page}`
       );
-      const data = res.data.results;
-      setGames(data);
-      setFilteredGames(data);
+      setGames(res.data.results);
+      setFilteredGames(res.data.results);
     } catch (err) {
       console.log(err);
     }
   };
+
+  const fetchGenres = async () => {
+    try {
+      const res = await axios.get(
+        `https://api.rawg.io/api/genres?key=${import.meta.env.VITE_RAWG_KEY}`
+      );
+      setGenres(res.data.results);
+      console.log(res.data.results);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return {
     games,
     filteredGames,
     select,
     genres,
+    setGenres,
+    searchGame,
+    setSearchGame,
     handleSelect,
+    // handleSearch,
     filterGames,
     handlePrev,
     handleNext,
