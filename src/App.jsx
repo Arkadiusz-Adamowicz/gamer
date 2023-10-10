@@ -11,6 +11,7 @@ const App = () => {
     handlePrev,
     handleNext,
   } = useFetch();
+  console.log(filteredGames);
 
   return (
     <div className="m-4 flex gap-5 text-white">
@@ -35,10 +36,22 @@ const App = () => {
           ))}
       </div>
       <div className="w-full rounded-xl bg-[#33374f]">
-        <div className="p-3 text-lg font-bold text-center flex items-center justify-between ">
-          <BiSolidLeftArrow className="cursor-pointer" onClick={handlePrev} />
-          <h2>GAMES</h2>
-          <BiSolidRightArrow className="cursor-pointer" onClick={handleNext} />
+        <div className="p-3 text-lg font-bold text-center flex items-center justify-between flex-col">
+          <div className="flex items-center justify-between w-full">
+            <BiSolidLeftArrow className="cursor-pointer" onClick={handlePrev} />
+            <h2>GAMES</h2>
+            <BiSolidRightArrow
+              className="cursor-pointer"
+              onClick={handleNext}
+            />
+          </div>
+          {/* <div className="h-[250px] md:h-[400px] w-full border border-white m-2 rounded-xl">
+            <img
+              src=""
+              alt="image"
+              className="object-cover w-full h-full rounded-xl"
+            />
+          </div> */}
         </div>
         <div className="grid base:grid-cols sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 content-center p-2 w-full justify-center font-semibold ">
           {filteredGames.length > 0 ? (

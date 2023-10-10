@@ -51,6 +51,7 @@ const useFetch = () => {
     setSelect(id);
   };
 
+
   const filterGames = genre => {
     const { id, name } = genre;
     name === 'All'
