@@ -13,6 +13,8 @@ const App = () => {
   } = useFetch();
   console.log(filteredGames);
 
+  const firstGame = filteredGames.length > 0 && filteredGames[0];
+
   return (
     <div className="m-4 flex gap-5 text-white">
       <div className="rounded-xl w-[200px] h-fit bg-[#33374f] hidden sm:block">
@@ -37,21 +39,20 @@ const App = () => {
       </div>
       <div className="w-full rounded-xl bg-[#33374f]">
         <div className="p-3 text-lg font-bold text-center flex items-center justify-between flex-col">
-          <div className="flex items-center justify-between w-full">
+          <div className="flex justify-between items-center w-full">
             <BiSolidLeftArrow className="cursor-pointer" onClick={handlePrev} />
-            <h2>GAMES</h2>
+            <div className="h-[250px] md:h-[400px] w-full shadow  m-2 rounded-xl">
+              <img
+                src={firstGame.background_image}
+                alt="image"
+                className="object-cover object-top w-full h-full rounded-xl"
+              />
+            </div>
             <BiSolidRightArrow
               className="cursor-pointer"
               onClick={handleNext}
             />
           </div>
-          {/* <div className="h-[250px] md:h-[400px] w-full border border-white m-2 rounded-xl">
-            <img
-              src=""
-              alt="image"
-              className="object-cover w-full h-full rounded-xl"
-            />
-          </div> */}
         </div>
         <div className="grid base:grid-cols sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 content-center p-2 w-full justify-center font-semibold ">
           {filteredGames.length > 0 ? (
@@ -68,7 +69,7 @@ const App = () => {
                   <img
                     src={game.background_image}
                     alt={game.name}
-                    className="h-[200px] w-[320px] rounded-xl object-cover shadow-[#1b1d29] shadow transition-all ease-in-out duration-100 hover:scale-[103%]"
+                    className="h-[200px] w-[320px] rounded-xl object-cover shadow-[#1b1d29] shadow  transition-all ease-in-out duration-100 hover:scale-[103%]"
                   />
                 </div>
               ))
