@@ -24,7 +24,7 @@ const App = () => {
           .map((genre) => (
             <div
               key={genre.id}
-              className={`mx-2 my-3 hover:bg-white hover:text-[#1b1d29] hover:shadow-[#1b1d29] hover:shadow cursor-pointer font-semibold rounded-lg p-2 ${
+              className={`m-2 mb-3 p-1 hover:bg-white hover:text-[#1b1d29] hover:shadow-[#1b1d29] hover:shadow cursor-pointer font-semibold rounded-lg ${
                 select === genre.id &&
                 "bg-white text-black shadow-[#1b1d29] shadow"
               }`}
@@ -38,13 +38,14 @@ const App = () => {
           ))}
       </div>
       <div className="w-full rounded-xl bg-[#33374f]">
-        <div className="p-3 text-lg font-bold text-center flex items-center justify-between flex-col">
+        <h2 className="p-3 text-lg  font-bold text-center ">GAMES</h2>
+        <div className="px-2 text-lg font-bold text-center flex items-center justify-between flex-col">
           <div className="flex justify-between items-center w-full relative">
             <BiSolidLeftArrow
               className="cursor-pointer absolute left-5 z-10"
               onClick={handlePrev}
             />
-            <div className="h-[250px] md:h-[400px] w-full m-2  rounded-xl relative">
+            <div className="h-[250px] md:h-[400px] w-full m-2 shadow rounded-xl relative">
               <img
                 src={firstGame.background_image}
                 alt="image"
