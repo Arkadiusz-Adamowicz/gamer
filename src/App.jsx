@@ -15,8 +15,8 @@ const App = () => {
 
   return (
     <div className="m-4 flex gap-5 text-white">
-      <div className="rounded-xl w-[200px] h-fit bg-[#33374f] hidden sm:block shadow-[#1b1d29] shadow">
-        <h2 className="p-3 text-lg  font-bold text-center ">GENRES</h2>
+      <div className="rounded-xl w-[180px] h-fit bg-[#33374f] hidden sm:block shadow-[#1b1d29] shadow">
+        <h2 className="p-2 mb-[-5px] text-lg font-bold text-center ">Genres</h2>
         {genres
           .sort((a, b) => (a.name < b.name ? -1 : 1))
           .map((genre) => (
@@ -35,8 +35,7 @@ const App = () => {
             </div>
           ))}
       </div>
-      <div className="w-full rounded-xl bg-[#33374f] shadow-[#1b1d29] shadow">
-        <h2 className="p-3 text-lg  font-bold text-center ">GAMES</h2>
+      <div className="w-full rounded-xl bg-[#33374f] shadow-[#1b1d29] shadow py-2">
         <div className="px-2 text-lg font-bold text-center flex items-center justify-between flex-col">
           <div className="flex justify-between items-center w-full relative">
             <BiSolidLeftArrow
@@ -46,7 +45,6 @@ const App = () => {
             <div className="h-[250px] md:h-[400px]  w-full m-2 shadow shadow-[#1b1d29] rounded-xl ">
               <img
                 src={firstGame.background_image}
-                alt=""
                 className="object-cover object-top w-full h-full rounded-xl"
               />
               <div className="w-full text-left z-100 rounded-l-xl">
@@ -72,11 +70,10 @@ const App = () => {
                       ? game.name.slice(0, 30) + "..."
                       : game.name}
                   </p>
-
                   <img
                     src={game.background_image}
                     alt={game.name}
-                    className="h-[200px] w-[320px] rounded-xl object-cover shadow-[#1b1d29] shadow  transition-all ease-in-out duration-100 hover:scale-[103%]"
+                    className="h-[200px] w-[320px] rounded-xl object-cover shadow-[#1b1d29] shadow transition-all ease-in-out duration-100 hover:scale-[103%] hover:border-[2px] hover:border-white "
                   />
                 </div>
               ))
