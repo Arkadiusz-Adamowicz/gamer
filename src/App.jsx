@@ -11,13 +11,11 @@ const App = () => {
     handlePrev,
     handleNext,
   } = useFetch();
-  console.log(filteredGames);
-
   const firstGame = filteredGames.length > 0 && filteredGames[0];
 
   return (
     <div className="m-4 flex gap-5 text-white">
-      <div className="rounded-xl w-[200px] h-fit bg-[#33374f] hidden sm:block">
+      <div className="rounded-xl w-[200px] h-fit bg-[#33374f] hidden sm:block shadow-[#1b1d29] shadow">
         <h2 className="p-3 text-lg  font-bold text-center ">GENRES</h2>
         {genres
           .sort((a, b) => (a.name < b.name ? -1 : 1))
@@ -37,7 +35,7 @@ const App = () => {
             </div>
           ))}
       </div>
-      <div className="w-full rounded-xl bg-[#33374f]">
+      <div className="w-full rounded-xl bg-[#33374f] shadow-[#1b1d29] shadow">
         <h2 className="p-3 text-lg  font-bold text-center ">GAMES</h2>
         <div className="px-2 text-lg font-bold text-center flex items-center justify-between flex-col">
           <div className="flex justify-between items-center w-full relative">
@@ -45,10 +43,10 @@ const App = () => {
               className="cursor-pointer absolute left-5 z-10"
               onClick={handlePrev}
             />
-            <div className="h-[250px] md:h-[400px] w-full m-2 shadow rounded-xl relative">
+            <div className="h-[250px] md:h-[400px] w-full m-2 shadow shadow-[#1b1d29] rounded-xl relative">
               <img
                 src={firstGame.background_image}
-                alt="image"
+                alt=""
                 className="object-cover object-top w-full h-full rounded-xl"
               />
               <div className="w-full text-left z-100 rounded-l-xl absolute top-0">
@@ -63,7 +61,7 @@ const App = () => {
             />
           </div>
         </div>
-        <div className="grid base:grid-cols sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 content-center p-2 w-full justify-center font-semibold ">
+        <div className="grid base:grid-cols sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 content-center p-2 w-full justify-center font-semibold">
           {filteredGames.length > 0 ? (
             filteredGames
               .sort((a, b) => (a.name < b.name ? -1 : 1))
