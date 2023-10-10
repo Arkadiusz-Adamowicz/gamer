@@ -39,17 +39,25 @@ const App = () => {
       </div>
       <div className="w-full rounded-xl bg-[#33374f]">
         <div className="p-3 text-lg font-bold text-center flex items-center justify-between flex-col">
-          <div className="flex justify-between items-center w-full">
-            <BiSolidLeftArrow className="cursor-pointer" onClick={handlePrev} />
-            <div className="h-[250px] md:h-[400px] w-full shadow  m-2 rounded-xl">
+          <div className="flex justify-between items-center w-full relative">
+            <BiSolidLeftArrow
+              className="cursor-pointer absolute left-5 z-10"
+              onClick={handlePrev}
+            />
+            <div className="h-[250px] md:h-[400px] w-full m-2  rounded-xl relative">
               <img
                 src={firstGame.background_image}
                 alt="image"
                 className="object-cover object-top w-full h-full rounded-xl"
               />
+              <div className="w-full text-left z-100 rounded-l-xl absolute top-0">
+                <h2 className="absolute top-0 p-2 text-xl md:text-2xl text-white font-bold z-100">
+                  {firstGame.name}
+                </h2>
+              </div>
             </div>
             <BiSolidRightArrow
-              className="cursor-pointer"
+              className="cursor-pointer absolute right-5"
               onClick={handleNext}
             />
           </div>
@@ -57,7 +65,7 @@ const App = () => {
         <div className="grid base:grid-cols sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 content-center p-2 w-full justify-center font-semibold ">
           {filteredGames.length > 0 ? (
             filteredGames
-              // .sort((a, b) => (a.name < b.name ? -1 : 1))
+              .sort((a, b) => (a.name < b.name ? -1 : 1))
               .map((game) => (
                 <div key={game.id} className="m-2 rounded-xl">
                   <p className="mb-2">
