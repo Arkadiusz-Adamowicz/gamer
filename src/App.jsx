@@ -43,14 +43,14 @@ const App = () => {
               className="cursor-pointer absolute left-5 z-10"
               onClick={handlePrev}
             />
-            <div className="h-[250px] md:h-[400px] w-full m-2 shadow shadow-[#1b1d29] rounded-xl relative">
+            <div className="h-[250px] md:h-[400px]  w-full m-2 shadow shadow-[#1b1d29] rounded-xl ">
               <img
                 src={firstGame.background_image}
                 alt=""
                 className="object-cover object-top w-full h-full rounded-xl"
               />
-              <div className="w-full text-left z-100 rounded-l-xl absolute top-0">
-                <h2 className="absolute top-0 p-2 text-xl md:text-2xl text-white font-bold z-100">
+              <div className="w-full text-left z-100 rounded-l-xl">
+                <h2 className="absolute top-0 p-3 text-xl md:text-2xl text-white font-bold z-100 title">
                   {firstGame.name}
                 </h2>
               </div>
