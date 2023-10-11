@@ -47,10 +47,10 @@ const useGames = () => {
   }
 
   const handleSearch = (searchTitle) => {
-  setFilteredGames(games.filter(game => game.name && game.name.toLowerCase().includes(searchTitle.toLowerCase())))
+  const searchedGame = games.filter(game => game.name.toLowerCase().includes(searchTitle.toLowerCase()))
+  setFilteredGames(searchedGame)
 }
 
-  
   const handleSelect = id => {
     setSelect(id);
   };
@@ -62,8 +62,6 @@ const useGames = () => {
   const handleNext = () => {
     setPage(page => page + 1);
   };
-
-
 
   return {
     games,
