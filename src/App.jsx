@@ -1,18 +1,20 @@
 import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
-import useFetch from './hooks/useFetch';
+import useGames from './hooks/useGames';
+import useGenres from './hooks/useGenres';
 import Header from './components/Header';
 
 const App = () => {
   const {
+    firstGame,
     filteredGames,
     select,
-    genres,
     handleSelect,
     filterGames,
     handlePrev,
     handleNext,
-  } = useFetch();
-  const firstGame = filteredGames.length > 0 && filteredGames[0];
+  } = useGames();
+
+  const { genres } = useGenres();
 
   return (
     <div className='m-4 flex gap-4 text-white'>

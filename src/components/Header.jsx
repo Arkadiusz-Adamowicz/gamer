@@ -1,9 +1,9 @@
-import useFetch from '../hooks/useFetch';
+import useGames from '../hooks/useGames';
 import logo from '../assets/logo.png';
 import { BiSearchAlt2 } from 'react-icons/bi';
 
 const Header = () => {
-  const { searchGame, setSearchGame } = useFetch();
+  const { searchGame, setSearchGame } = useGames();
   return (
     <div className='md:flex md:justify-between items-center'>
       <div className='w-full flex items-center justify-center md:justify-normal mb-3 md:mb-0'>
