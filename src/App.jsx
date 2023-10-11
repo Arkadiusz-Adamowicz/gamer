@@ -14,13 +14,19 @@ const App = () => {
     firstGame,
     filteredGames,
     select,
-    handleClear,
+    clearSearch,
     handleFilter,
     handleSelect,
     handleSearch,
     handlePrev,
     handleNext,
   } = useGames();
+
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      clearSearch();
+    }
+  };
 
   return (
     <div className='m-4 flex gap-4 text-white'>
@@ -34,7 +40,7 @@ const App = () => {
               key={genre.id}
               className={`${
                 select === genre.id && 'bg-[#1b1d29]'
-              } m-2 mb-3 px-2 py-1.5 transition-all ease-in-out duration-100 cursor-pointer rounded-lg`}
+              } m-2 mb-3 px-2 py-1.5 transition-all ease-in-out duration-100 cursor-pointer rounded-lg hover:bg-[#1b1d29]`}
               onClick={() => {
                 handleSelect(genre.id);
                 handleFilter(genre.id);
@@ -58,7 +64,7 @@ const App = () => {
           <div className='md:flex md:justify-between items-center'>
             <div
               className='w-full flex items-center justify-center md:justify-normal mb-3 md:mb-0 cursor-pointer'
-              onClick={handleClear}
+              onClick={clearSearch}
             >
               <img src={logo} alt='logo' className='w-[150px]' />
             </div>
@@ -69,6 +75,7 @@ const App = () => {
                 className='p-2 w-full md:w-[300px] rounded-lg outline-none text-[#1b1d29]'
                 placeholder='Search game...'
                 onChange={e => handleSearch(e.target.value)}
+                onKeyDown={handleKeyDown}
               />
             </div>
           </div>

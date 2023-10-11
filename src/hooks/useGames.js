@@ -10,6 +10,11 @@ const useGames = () => {
   const [searchTitle, setSearchTitle] = useState('');
   const firstGame = filteredGames.length > 0 && filteredGames[0];
 
+  const clearSearch = () => {
+    setSearchTitle('');
+    fetchGames();
+  };
+
   useEffect(() => {
     fetchGames();
   }, [page]);
@@ -41,14 +46,9 @@ const useGames = () => {
     }
   };
 
-  const handleClear = () => {
-    window.location.reload();
-  };
-
   const handleSearch = searchTitle => {
-    const searchedGame = filteredGames.filter(
-      game =>
-        game.name && game.name.toLowerCase().includes(searchTitle.toLowerCase())
+    const searchedGame = games.filter(game =>
+      game.name.toLowerCase().includes(searchTitle.toLowerCase())
     );
     setFilteredGames(searchedGame);
   };
@@ -71,13 +71,12 @@ const useGames = () => {
     filteredGames,
     firstGame,
     searchTitle,
-    handleClear,
+    clearSearch,
     handleFilter,
     handleSearch,
     handleSelect,
     handlePrev,
     handleNext,
-    setSearchTitle,
   };
 };
 
