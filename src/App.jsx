@@ -81,7 +81,7 @@ const App = () => {
             <div className="flex justify-between items-center w-full relative w-full">
               {firstGame && (
                 <BiSolidLeftArrow
-                  className="cursor-pointer absolute left-5 z-10"
+                  className="cursor-pointer absolute left-5 z-8"
                   onClick={handlePrev}
                 />
               )}

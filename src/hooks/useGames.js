@@ -9,23 +9,24 @@ const useGames = () => {
   const [select, setSelect] = useState(0);
   const [searchTitle, setSearchTitle] = useState('')
   const firstGame = filteredGames.length > 0 && filteredGames[0];
-
+  
   useEffect(() => {
     fetchGames();
   }, [page]);
 
    const fetchGames = async () => {
-    try {
-      const res = await axios.get(
-        `https://api.rawg.io/api/games?key=${
-          import.meta.env.VITE_RAWG_KEY
-        }&page=${page}`
-      );
-      setGames(res.data.results);
-      setFilteredGames(res.data.results);
-    } catch (err) {
-      console.log(err);
-    }
+      try {
+        const res = await axios.get(
+          `https://api.rawg.io/api/games?key=${
+            import.meta.env.VITE_RAWG_KEY
+          }&page=${page}`
+        );
+        setGames(res.data.results);
+        setFilteredGames(res.data.results);
+      } catch (err) {
+        console.log(err);
+      }
+    
   };
 
     const handleFilter = async (id) => {
@@ -42,15 +43,15 @@ const useGames = () => {
   };
 
   const handleClear = () =>{
-  setFilteredGames(games)
-  setSearchTitle(searchTitle)
+  window.location.reload();
   }
 
   const handleSearch = (searchTitle) => {
-  const searchedGame = games.filter(game => game.name.toLowerCase().includes(searchTitle.toLowerCase()))
+  const searchedGame = games.filter(game => game.name && game.name.toLowerCase().includes(searchTitle.toLowerCase()))
   setFilteredGames(searchedGame)
 }
 
+  
   const handleSelect = id => {
     setSelect(id);
   };
@@ -62,6 +63,8 @@ const useGames = () => {
   const handleNext = () => {
     setPage(page => page + 1);
   };
+
+
 
   return {
     games,
