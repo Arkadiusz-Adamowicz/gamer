@@ -14,6 +14,7 @@ const App = () => {
     firstGame,
     filteredGames,
     select,
+    handleClear,
     handleFilter,
     handleSelect,
     handleSearch,
@@ -57,7 +58,10 @@ const App = () => {
         {/* HEADER */}
         <div className="mb-4 w-full shadow bg-[#33374f] rounded-xl p-2">
           <div className="md:flex md:justify-between items-center">
-            <div className="w-full flex items-center justify-center md:justify-normal mb-3 md:mb-0">
+            <div
+              className="w-full flex items-center justify-center md:justify-normal mb-3 md:mb-0 cursor-pointer"
+              onClick={handleClear}
+            >
               <img src={logo} alt="logo" className="w-[150px]" />
             </div>
             <div className="flex items-center gap-1 border bg-white rounded-lg m-2">

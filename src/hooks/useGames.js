@@ -41,9 +41,15 @@ const useGames = () => {
     }
   };
 
+  const handleClear = () =>{
+  setFilteredGames(games)
+  setSearchTitle(searchTitle)
+  }
+
   const handleSearch = (searchTitle) => {
   setFilteredGames(games.filter(game => game.name && game.name.toLowerCase().includes(searchTitle.toLowerCase())))
-  }
+}
+
   
   const handleSelect = id => {
     setSelect(id);
@@ -65,6 +71,7 @@ const useGames = () => {
     filteredGames,
     firstGame,
     searchTitle,
+    handleClear,
     handleFilter,
     handleSearch,
     handleSelect,
