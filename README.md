@@ -7,5 +7,5 @@ demo:
 
 <img width="600" alt="image" src="./src/assets/capture1.png">
 <br>
-<img width="600" alt="image" src="./src/assets/capture2.png">
+<img width="300" alt="image" src="./src/assets/capture2.png">
 <br>
