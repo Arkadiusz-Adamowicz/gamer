@@ -46,7 +46,7 @@ const useGames = () => {
   };
 
   const handleSearch = searchTitle => {
-    const searchedGame = games.filter(
+    const searchedGame = filteredGames.filter(
       game =>
         game.name && game.name.toLowerCase().includes(searchTitle.toLowerCase())
     );
