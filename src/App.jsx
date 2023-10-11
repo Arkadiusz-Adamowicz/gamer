@@ -115,7 +115,7 @@ const App = () => {
           <div className="grid base:grid-cols sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 content-center p-2 w-full justify-center font-semibold">
             {filteredGames.length > 0 &&
               filteredGames
-                .sort((a, b) => (a.name < b.name ? -1 : 1))
+                // .sort((a, b) => (a.name < b.name ? -1 : 1))
                 .map((game) => (
                   <div key={game.id} className="m-2 rounded-xl">
                     <h2 className="mb-2">

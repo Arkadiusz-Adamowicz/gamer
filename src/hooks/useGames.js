@@ -64,8 +64,6 @@ const useGames = () => {
     setPage(page => page + 1);
   };
 
-
-
   return {
     games,
     select,
