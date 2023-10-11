@@ -16,6 +16,7 @@ const App = () => {
     select,
     handleFilter,
     handleSelect,
+    handleSearch,
     handlePrev,
     handleNext,
   } = useGames();
@@ -62,10 +63,10 @@ const App = () => {
             <div className="flex items-center gap-1 border bg-white rounded-lg m-2">
               <BiSearchAlt2 size={25} className="text-[#33374f] ml-2" />
               <input
+                type="text"
                 className="p-2 w-full md:w-[300px] rounded-lg outline-none text-[#1b1d29]"
                 placeholder="Search game..."
-                onChange={() => {}}
-                value={""}
+                onChange={(e) => handleSearch(e.target.value)}
               />
             </div>
           </div>
@@ -74,10 +75,12 @@ const App = () => {
           {/* BANNER */}
           <div className="px-2 text-lg font-bold text-center flex items-center justify-between flex-col w-full">
             <div className="flex justify-between items-center w-full relative w-full">
-              <BiSolidLeftArrow
-                className="cursor-pointer absolute left-5 z-10"
-                onClick={handlePrev}
-              />
+              {firstGame && (
+                <BiSolidLeftArrow
+                  className="cursor-pointer absolute left-5 z-10"
+                  onClick={handlePrev}
+                />
+              )}
               <div className="h-[250px] md:h-[400px] w-full m-2 shadow shadow-[#1b1d29] rounded-xl ">
                 {firstGame ? (
                   <img
@@ -96,10 +99,12 @@ const App = () => {
                   </h2>
                 </div>
               </div>
-              <BiSolidRightArrow
-                className="cursor-pointer absolute right-5"
-                onClick={handleNext}
-              />
+              {firstGame && (
+                <BiSolidRightArrow
+                  className="cursor-pointer absolute right-5"
+                  onClick={handleNext}
+                />
+              )}
             </div>
           </div>
           {/* GAMES LIST */}
@@ -114,7 +119,6 @@ const App = () => {
                         ? game.name.slice(0, 30) + "..."
                         : game.name}
                     </h2>
-
                     <img
                       src={game.background_image}
                       alt={game.name}

@@ -7,6 +7,7 @@ const useGames = () => {
   const [filteredGames, setFilteredGames] = useState([]);
   const [page, setPage] = useState(1);
   const [select, setSelect] = useState(0);
+  const [searchTitle, setSearchTitle] = useState('')
   const firstGame = filteredGames.length > 0 && filteredGames[0];
 
   useEffect(() => {
@@ -40,10 +41,10 @@ const useGames = () => {
     }
   };
 
-  // const handleSeaarch = () =>{
-
-  // }
-
+  const handleSearch = (searchTitle) => {
+  setFilteredGames(games.filter(game => game.name && game.name.toLowerCase().includes(searchTitle.toLowerCase())))
+  }
+  
   const handleSelect = id => {
     setSelect(id);
   };
@@ -63,10 +64,13 @@ const useGames = () => {
     select,
     filteredGames,
     firstGame,
+    searchTitle,
     handleFilter,
+    handleSearch,
     handleSelect,
     handlePrev,
     handleNext,
+    setSearchTitle,
   };
 };
 
