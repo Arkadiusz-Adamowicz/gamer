@@ -13,23 +13,7 @@ const useGames = () => {
     fetchGames();
   }, [page]);
 
-  const handleSelect = id => {
-    setSelect(id);
-  };
-
-  const filterGames = id => {
-    setFilteredGames(games.filter(genre => genre.id && genre.id === id));
-  };
-
-  const handlePrev = () => {
-    setPage(page => page - 1);
-  };
-
-  const handleNext = () => {
-    setPage(page => page + 1);
-  };
-
-  const fetchGames = async () => {
+   const fetchGames = async () => {
     try {
       const res = await axios.get(
         `https://api.rawg.io/api/games?key=${
@@ -43,13 +27,44 @@ const useGames = () => {
     }
   };
 
+    const handleFilter = async (id) => {
+    try {
+      const res = await axios.get(
+        `https://api.rawg.io/api/games?key=${
+          import.meta.env.VITE_RAWG_KEY
+        }&genres=${id}`
+      );
+      setFilteredGames(res.data.results);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // const handleSeaarch = () =>{
+
+  // }
+
+  const handleSelect = id => {
+    setSelect(id);
+  };
+
+  const handlePrev = () => {
+    setPage(page => page - 1);
+  };
+
+  const handleNext = () => {
+    setPage(page => page + 1);
+  };
+
+
+
   return {
     games,
+    select,
     filteredGames,
     firstGame,
-    select,
+    handleFilter,
     handleSelect,
-    filterGames,
     handlePrev,
     handleNext,
   };

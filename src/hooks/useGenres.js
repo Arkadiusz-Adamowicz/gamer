@@ -3,10 +3,12 @@ import axios from 'axios';
 import.meta.env.VITE_RAWG_KEY;
 
 const useGenres = () => {
+   const [genres, setGenres] = useState([]);
+
   useEffect(() => {
     fetchGenres();
   }, []);
-  const [genres, setGenres] = useState([]);
+ 
 
   const fetchGenres = async () => {
     try {
@@ -14,7 +16,6 @@ const useGenres = () => {
         `https://api.rawg.io/api/genres?key=${import.meta.env.VITE_RAWG_KEY}`
       );
       setGenres(res.data.results);
-      console.log(res.data.results);
     } catch (err) {
       console.log(err);
     }
