@@ -1,8 +1,12 @@
-# React + Vite
+<h2>Games List web page with filtering, and search system. Data fetched from 
+<span><a href ='https://api.rawg.io/'>link</a></span> using private Api key.
+</h2>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+demo:
 
-Currently, two official plugins are available:
+<h2>https://gamer-arek.netlify.app</h2>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img width="600" alt="image" src="./src/assets/capture1.png">
+<br>
+<img width="600" alt="image" src="./src/assets/capture2.png">
+<br>
