@@ -14,19 +14,15 @@ const App = () => {
     firstGame,
     filteredGames,
     select,
-    clearSearch,
+    searchTitle,
     handleFilter,
     handleSelect,
     handleSearch,
+    handleClear,
     handlePrev,
     handleNext,
+    setSearchTitle,
   } = useGames();
-
-  const handleKeyDown = e => {
-    if (e.key === 'Enter') {
-      clearSearch();
-    }
-  };
 
   return (
     <div className='m-4 flex gap-4 text-white'>
@@ -62,10 +58,7 @@ const App = () => {
         {/* HEADER */}
         <div className='mb-4 w-full shadow bg-[#33374f] rounded-xl p-2'>
           <div className='md:flex md:justify-between items-center'>
-            <div
-              className='w-full flex items-center justify-center md:justify-normal mb-3 md:mb-0 cursor-pointer'
-              onClick={clearSearch}
-            >
+            <div className='w-full flex items-center justify-center md:justify-normal mb-3 md:mb-0 cursor-pointer'>
               <img src={logo} alt='logo' className='w-[150px]' />
             </div>
             <div className='flex items-center gap-1 border bg-white rounded-lg m-2'>
@@ -74,8 +67,12 @@ const App = () => {
                 type='text'
                 className='p-2 w-full md:w-[300px] rounded-lg outline-none text-[#1b1d29]'
                 placeholder='Search game...'
-                onChange={e => handleSearch(e.target.value)}
-                onKeyDown={handleKeyDown}
+                value={searchTitle}
+                onChange={e => {
+                  setSearchTitle(e.target.value);
+                  handleSearch(searchTitle);
+                }}
+                onKeyDown={handleClear}
               />
             </div>
           </div>
@@ -124,7 +121,7 @@ const App = () => {
           <div className='grid base:grid-cols sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 content-center p-2 w-full justify-center font-semibold'>
             {filteredGames.length > 0 &&
               filteredGames
-                // .sort((a, b) => (a.name < b.name ? -1 : 1))
+                .sort((a, b) => (a.name < b.name ? -1 : 1))
                 .map(game => (
                   <div key={game.id} className='m-2 rounded-xl'>
                     <h2 className='mb-2'>
