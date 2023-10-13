@@ -9,18 +9,18 @@ const useGames = () => {
   const [select, setSelect] = useState(0);
   const [searchTitle, setSearchTitle] = useState('');
   const firstGame = filteredGames.length > 0 && filteredGames[0];
+  let apiUrl = `https://api.rawg.io/api/games?key=${import.meta.env.VITE_RAWG_KEY}`
 
   useEffect(() => {
     fetchGames();
-  }, [page]);
+  }, [page, select, searchTitle]);
 
   const fetchGames = async () => {
     try {
-      const res = await axios.get(
-        `https://api.rawg.io/api/games?key=${
-          import.meta.env.VITE_RAWG_KEY
-        }&page=${page}`
-      );
+        if (select !==0) {
+          apiUrl += `&genres=${select}&page=${page}`
+        }
+      const res = await axios.get(apiUrl);
       setGames(res.data.results);
       setFilteredGames(res.data.results);
     } catch (err) {
@@ -28,12 +28,10 @@ const useGames = () => {
     }
   };
 
-  const handleFilter = async id => {
+  const handleFilter = async (id) => {
     try {
       const res = await axios.get(
-        `https://api.rawg.io/api/games?key=${
-          import.meta.env.VITE_RAWG_KEY
-        }&genres=${id}`
+       `${apiUrl}&genres=${id}&page=${page}`
       );
       setFilteredGames(res.data.results);
     } catch (err) {
@@ -44,9 +42,7 @@ const useGames = () => {
   const handleSearch = async searchTitle => {
     try {
       const res = await axios.get(
-        `https://api.rawg.io/api/games?key=${
-          import.meta.env.VITE_RAWG_KEY
-        }&search=${searchTitle}`
+        `${apiUrl}&search=${searchTitle}`
       );
       setFilteredGames(res.data.results);
     } catch (err) {
